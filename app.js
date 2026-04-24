@@ -77,7 +77,7 @@ const currentYear = new Date().getFullYear();
 const startYear = 2025;
 const endYear = 2027;
 
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby0u6twGoAJekyE66rI88Ia4nmKOX84gBA2nXfEDedZ5Wp5u2kimQ3Lx2GJ0xSj87sw/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxVhEcEZYPrj5MXaJ63l-MDrt6i4dgyXPAE3SeS5F3rLLZr5Q7q7t2aXRsU4eKCwmTn/exec';
 
 let appState = {};
 
@@ -144,7 +144,7 @@ async function loadState() {
     }
 }
 
-async function syncWithGoogle(pointId, text, status) {
+async function syncWithGoogle(pointId, text, status, category) {
     const syncIndicator = document.createElement('div');
     syncIndicator.className = 'sync-toast';
     syncIndicator.textContent = 'Sincronizando con la nube...';
@@ -156,7 +156,8 @@ async function syncWithGoogle(pointId, text, status) {
             month: months[monthSelect.value],
             pointId: pointId,
             text: text,
-            status: status
+            status: status,
+            category: category
         };
 
         await fetch(GOOGLE_SCRIPT_URL, {
@@ -236,7 +237,7 @@ function renderCategories() {
             saveState();
             
             // Sync with Google Sheets
-            syncWithGoogle(id, text, isChecked);
+            syncWithGoogle(id, text, isChecked, catId);
             
             const cat = obligaciones.find(c => c.categoria.replace(/\s/g, '') === catId);
             const cCount = cat.puntos.filter(p => appState[p.id]).length;
