@@ -77,7 +77,7 @@ const currentYear = new Date().getFullYear();
 const startYear = 2025;
 const endYear = 2027;
 
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxmxwKo9f-5GEMLbAz_c0_5_2F_fqvQPntJcfrY01XzhMsq_JICGE-lyYBS1DT6K1rf/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby0u6twGoAJekyE66rI88Ia4nmKOX84gBA2nXfEDedZ5Wp5u2kimQ3Lx2GJ0xSj87sw/exec';
 
 let appState = {};
 
